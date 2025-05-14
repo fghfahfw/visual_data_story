@@ -1,0 +1,51 @@
+---
+title: My daily bill story
+output: html_document
+---
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+```
+
+```{js}
+$(function() {
+  $(".level2").css('visibility', 'hidden');
+  $(".level2").first().css('visibility', 'visible');
+  $(".container-fluid").height($(".container-fluid").height() + 300);
+  $(window).on('scroll', function() {
+    $('h2').each(function() {
+      var h2Top = $(this).offset().top - $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (h2Top >= 0 && h2Top <= windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'visible');
+      } else if (h2Top > windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'hidden');
+      }
+    });
+  });
+})
+```
+
+```{css}
+.figcaption {display: none}
+```
+
+## What's going on with this data?
+When I felt like it was getting harder and harder to control my weekly spending, I started to think of ways to do it, and I ended up creating a list of my weekly bills in hopes of controlling my spending habits.
+---
+The first statistic is about how much I spent in total each day of the month:
+---
+
+![](plot1.png)
+---
+I think the activity that causes me to spend the most is shopping, so the second statistic graph is the days that shopping appears in my bills:
+---
+
+![](plot2.png)
+---
+I created a weekday spending distribution at the same time to find my usual spending habits and try to improve them:
+---
+
+![](plot3.png)
